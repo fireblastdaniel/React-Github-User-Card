@@ -1,47 +1,67 @@
 import React from 'react';
-import logo from './logo.svg';
 import axios from 'axios'
+import { Route, Switch } from 'react-router-dom'
+
+import Bio from './components/Bio'
+import Followers from './components/Followers'
+import Following from './components/Following'
+
 import './App.css';
 
 class App extends React.Component {
   constructor(){
     super();
     this.state = {
-      userInfo: {}
+      user: 'fireblastdaniel',
+      userInfo: {},
+      userFollowers: [],
+      userFollowing: []
     };
   }
 
   componentDidMount() {
     axios
-    .get('https://api.github.com/users/fireblastdaniel')
+    .all([
+      axios.get(`https://api.github.com/users/${this.state.user}`),
+      axios.get(`https://api.github.com/users/${this.state.user}/followers`),
+      axios.get(`https://api.github.com/users/${this.state.user}/following`)
+    ])
     .then( response => {
       this.setState({
-        userInfo: response.data
+        userInfo: response[0].data,
+        userFollowers: response[1].data,
+        userFollowing: response[2].data
       })
       console.log(this.state)
     })
     .catch(error => console.log(error))
   }
 
+  // componentDidUpdate(prevProps, prevState) {
+  //   if(prevState.userInfo !== this.state.userInfo){
+
+  //   }
+  // }
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+        <div className="App">
+          <Switch>
+            <Route 
+              exact path='/' 
+              render={ () => 
+                <Bio 
+                  user={this.state.userInfo}
+                />}
+            />
+            {console.log(this.state)}
+            <Route 
+              path='/followers' 
+              render={ () => <Followers user={this.state.userInfo} followers={this.state.userFollowers} />} 
+            />
+            <Route path='/following' component={Following} />
+          </Switch>
+        </div>
     );
   }
 }

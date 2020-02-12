@@ -36,3 +36,69 @@
     transform: rotate(360deg);
   }
 }
+
+/* General */
+.container{
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 3fr 7fr;
+  grid-template-rows: 1fr 2fr 1fr 6fr;
+}
+
+/* Menu */
+.menu{
+  display: flex;
+  justify-content: space-around;
+  grid-column-start: 2;
+  align-self: center;
+}
+
+/* Sidebar */
+.sidebar{
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 5;
+
+  display: grid;
+  grid-template-rows: 3fr 1fr 6fr;
+}
+
+.sidebar img{
+  width: 80%;
+  margin: auto;
+}
+
+/* Bio */
+.no-bio{
+  font-style: italic;
+}
+
+.user-stats{
+  text-align: left;
+}
+
+/* Follow Lists */
+.follow-list{
+  display: flex;
+  flex-wrap: wrap;
+
+  grid-column-start:2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 5;
+}
+
+/* Follow Cards */
+.follow-card{
+  height: 100px;
+  width: 100%;
+  text-align: left;
+}
+
+.follow-card img{
+  max-height: 100%;
+}
