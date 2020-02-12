@@ -18,7 +18,7 @@ class Followers extends React.Component{
                     { 
                     this.props.followers ?
                         this.props.followers.map( f => (
-                            <FollowCard key={f.id} info={f}/>
+                            <FollowCard clickFollowCard={this.props.clickFollowCard} key={f.id} info={f}/>
                         )) :
                         null
                     }

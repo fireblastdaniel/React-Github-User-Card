@@ -10,9 +10,9 @@ class FollowCard extends React.Component {
 
     render(){
         return(
-            <div className='follow-card'>
+            <div className='follow-card' onClick={() => this.props.clickFollowCard(this.props.info.login)}>
                 <img src={`${this.props.info.avatar_url}`} alt='follower pic'/>
-                <p>{this.props.info.name}</p>
+                <p>{this.props.info.login}</p>
             </div>
         );
     }

@@ -37,11 +37,32 @@ class App extends React.Component {
     .catch(error => console.log(error))
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   if(prevState.userInfo !== this.state.userInfo){
+  componentDidUpdate(prevProps, prevState) {
+    if(prevState.user !== this.state.user){
+      axios
+      .all([
+        axios.get(`https://api.github.com/users/${this.state.user}`),
+        axios.get(`https://api.github.com/users/${this.state.user}/followers`),
+        axios.get(`https://api.github.com/users/${this.state.user}/following`)
+      ])
+      .then( response => {
+        this.setState({
+          userInfo: response[0].data,
+          userFollowers: response[1].data,
+          userFollowing: response[2].data
+        })
+        console.log(this.state)
+      })
+      .catch(error => console.log(error))
+    }
+  }
 
-  //   }
-  // }
+  clickFollowCard = username => {
+    console.log(username)
+    this.setState({
+      user: username
+    })
+  }
 
   render() {
     return (
@@ -57,7 +78,7 @@ class App extends React.Component {
             {console.log(this.state)}
             <Route 
               path='/followers' 
-              render={ () => <Followers user={this.state.userInfo} followers={this.state.userFollowers} />} 
+              render={ () => <Followers clickFollowCard={this.clickFollowCard} user={this.state.userInfo} followers={this.state.userFollowers} />} 
             />
             <Route path='/following' component={Following} />
           </Switch>

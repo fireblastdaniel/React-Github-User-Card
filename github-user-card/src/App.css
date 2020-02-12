@@ -38,6 +38,10 @@
 }
 
 /* General */
+* {
+  box-sizing: border-box;
+}
+
 .container{
   width: 100%;
   max-width: 1080px;
@@ -85,6 +89,7 @@
 .follow-list{
   display: flex;
   flex-wrap: wrap;
+  overflow-y: scroll;
 
   grid-column-start:2;
   grid-column-end: 3;
@@ -92,13 +97,29 @@
   grid-row-end: 5;
 }
 
+.follow-list::-webkit-scrollbar{
+  width: 0 !important;
+}
+
 /* Follow Cards */
 .follow-card{
   height: 100px;
   width: 100%;
   text-align: left;
+  border: 1px solid black;
+  border-radius: 8px;
+  margin: .5%;
+  padding: 1%;
+
+  display: flex;
 }
 
 .follow-card img{
   max-height: 100%;
+}
+
+.follow-card p{
+  justify-self:center;
+  align-self:center;
+  margin-left: 10%;
 }
