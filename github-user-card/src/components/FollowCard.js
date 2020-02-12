@@ -1,6 +1,4 @@
 import React from 'react'
-import Sidebar from './Sidebar'
-import Menu from './Menu'
 
 class FollowCard extends React.Component {
     constructor(){

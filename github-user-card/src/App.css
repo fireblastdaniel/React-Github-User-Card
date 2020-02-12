@@ -40,6 +40,7 @@
 /* General */
 * {
   box-sizing: border-box;
+  background: #F1E0D6;
 }
 
 .container{
@@ -57,7 +58,27 @@
   display: flex;
   justify-content: space-around;
   grid-column-start: 2;
+  align-self: stretch;
+
+  background: #595775;
+}
+
+.menu a{
+  background: #595775;
+  align-self: stretch;
   align-self: center;
+
+  color: white;
+  text-decoration: none;
+  font-size: 24px;
+}
+
+.menu a:hover{
+  text-decoration: underline;
+}
+
+.menu div{
+  background: #595775;
 }
 
 /* Sidebar */
@@ -69,6 +90,24 @@
 
   display: grid;
   grid-template-rows: 3fr 1fr 6fr;
+
+  background: #ABA6BF;
+}
+
+.username{
+  background: #ABA6BF;
+  color: white;
+  font-size: 30px;
+}
+
+.sidebar a{
+  background: #ABA6BF;
+  text-decoration: none;
+}
+
+.sidebar a:hover{
+  text-decoration:underline;
+  text-decoration-color: white;
 }
 
 .sidebar img{
@@ -81,8 +120,13 @@
   font-style: italic;
 }
 
+.bio-text{
+  margin-left: 2%;
+}
+
 .user-stats{
   text-align: left;
+  margin-left: 2%;
 }
 
 /* Follow Lists */
@@ -90,6 +134,9 @@
   display: flex;
   flex-wrap: wrap;
   overflow-y: scroll;
+
+  margin-left: 2%;
+  margin-top: 2%;
 
   grid-column-start:2;
   grid-column-end: 3;
@@ -112,6 +159,11 @@
   padding: 1%;
 
   display: flex;
+  background: #F1F3F2;
+}
+
+.follow-card:hover{
+  cursor: pointer;
 }
 
 .follow-card img{
@@ -122,4 +174,8 @@
   justify-self:center;
   align-self:center;
   margin-left: 10%;
+}
+
+.follow-card *{
+  background: #F1F3F2;
 }

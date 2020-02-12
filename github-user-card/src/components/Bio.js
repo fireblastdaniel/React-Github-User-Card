@@ -47,7 +47,7 @@ class Bio extends React.Component{
                 <div className='about'>
                     {/* just a few pieces of info about your bio */}
                     {this.props.user.bio ? 
-                        <p>this.props.user.bio</p> :
+                        <p className='bio-text'>{this.props.user.bio}</p> :
                         <p className= 'no-bio'>This user has not updated their bio</p>
                     }
                     <div className='user-stats'>

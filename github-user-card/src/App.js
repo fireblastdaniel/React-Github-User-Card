@@ -80,7 +80,10 @@ class App extends React.Component {
               path='/followers' 
               render={ () => <Followers clickFollowCard={this.clickFollowCard} user={this.state.userInfo} followers={this.state.userFollowers} />} 
             />
-            <Route path='/following' component={Following} />
+            <Route 
+              path='/following' 
+              render={ () => <Following clickFollowCard={this.clickFollowCard} user={this.state.userInfo} following={this.state.userFollowing} />} 
+            />
           </Switch>
         </div>
     );
